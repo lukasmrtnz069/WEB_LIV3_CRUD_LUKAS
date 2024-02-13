@@ -4,6 +4,23 @@ DROP TABLE IF EXISTS Trinket;
 DROP TABLE IF EXISTS Enemy;
 DROP TABLE IF EXISTS Personnage;
 DROP TABLE IF EXISTS Encounter;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS post;
+
+CREATE TABLE user (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT UNIQUE NOT NULL,
+  password TEXT NOT NULL
+);
+
+CREATE TABLE post (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  author_id INTEGER NOT NULL,
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  title TEXT NOT NULL,
+  body TEXT NOT NULL,
+  FOREIGN KEY (author_id) REFERENCES user (id)
+);
 
 
 CREATE TABLE Armor (
@@ -47,12 +64,14 @@ CREATE TABLE Personnage (
     char_class TEXT NOT NULL,
     char_level INTEGER NOT NULL,
     char_hit_points INTEGER NOT NULL,
+    player_id INTEGER NOT NULL,
     armor_id INTEGER NOT NULL,
     weapon_id INTEGER NOT NULL,
     trinket_id INTEGER NOT NULL,
     FOREIGN KEY (armor_id) REFERENCES Armor(armor_id),
     FOREIGN KEY (weapon_id) REFERENCES Armor(armor_id),
     FOREIGN KEY (trinket_id) REFERENCES Armor(armor_id)
+    FOREIGN KEY (player_id) REFERENCES user (id)
 );
 
 CREATE TABLE Encounter (
