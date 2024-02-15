@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Character creation{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="char_name">Character name</label><br>
+    <br>
+    <input name="char_name" id="char_name" required><br>
+    <br>
+    <label for="char_class">Character class</label><br>
+    <br>
+    <input name="char_class" id="char_class" required>
+    <br><br>
+    <label for="char_level">Character level</label><br>
+    <br>
+    <input name="char_level" id="char_level" required>
+    <br><br>
+    <label for="char_hit_points">Character hits points</label>
+    <br><br>
+    <input name="char_hit_points" id="char_hit_points" required>
+    <br><br>
+    <label for="player_id">Your id</label>
+    <br><br>
+    <select name="player_id" id="player_id" required>
+      {% for player in players %}
+        <option value="{{ player.id }}">{{ player.username }}</option>
+      {% endfor %}
+    </select>
+    <br><br>
+    <label for="armor_id">Armor</label><br>
+    <br>
+    <select name="armor_id" id="armor_id" required>
+      {% for armor in armors %}
+        <option value="{{ armor_id }}">{{ armor.armor_name }}</option>
+      {% endfor %}
+    </select><br>
+    <br>
+    <label for="weapon_id">Weapon</label><br>
+    <br><br>
+    <select name="weapon_id" id="weapon_id" required>
+      {% for weapon in weapons %}
+        <option value="{{ weapon_id }}">{{ weapon.weapon_name }}</option>
+      {% endfor %}
+    </select><br>
+    <br><br>
+    <label for="trinket_id">Trinket</label><br>
+    <br><br>
+    <select name="trinket_id" id="trinket_id" required>
+      {% for trinket in trinkets %}
+        <option value="{{ trinket_id }}">{{ trinket.trinket_name }}</option>
+      {% endfor %}
+    </select><br>
+    <br><br>
+    <input type="submit" value="Create Character">
+  </form>
+{% endblock %}
