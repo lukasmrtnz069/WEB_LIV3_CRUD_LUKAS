@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Trinket creation{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="trinket_name">Trinket name</label>
+    <input name="trinket_name" id="trinket_name" required>
+    <label for="trinket_wearable_by">Trinket class</label>
+    <input name="trinket_wearable_by" id="trinket_wearable_by" required>
+    <label for="trinket_bonus">Trinket bonus</label>
+    <input name="trinket_bonus" id="trinket_bonus" required>
+    <input type="submit" value="Create trinket">
+  </form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Armor creation{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<h1>Armor List</h1>
+    <ul>
+        {% for armor in armor_records %}
+        <li>{{ armor.armor_name }} - {{ armor.armor_defense }}</li>
+        {% endfor %}
+    </ul>
+  <form method="post">
+    <label for="armor_name">Armor name</label>
+    <input name="armor_name" id="armor_name" required>
+    <label for="armor_defense">Armor defense stat</label>
+    <input name="armor_defense" id="armor_defense" required>
+    <input type="submit" value="Create armor">
+  </form>
+{% endblock %}

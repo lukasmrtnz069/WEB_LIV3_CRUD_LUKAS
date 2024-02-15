@@ -39,4 +39,10 @@ def create_app(test_config=None):
     app.register_blueprint(mainPage.bp)
     app.add_url_rule('/', endpoint='index')
 
+    from . import armor
+    app.register_blueprint(armor.bp)
+
+    from . import weapon
+    app.register_blueprint(weapon.bp)
+
     return app
