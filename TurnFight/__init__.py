@@ -44,5 +44,11 @@ def create_app(test_config=None):
 
     from . import weapon
     app.register_blueprint(weapon.bp)
+    
+    from . import trinket
+    app.register_blueprint(trinket.bp)
+
+    from . import character
+    app.register_blueprint(character.bp)
 
     return app

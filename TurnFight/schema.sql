@@ -54,8 +54,8 @@ CREATE TABLE Enemy (
     weapon_id INTEGER NOT NULL,
     trinket_id INTEGER NOT NULL,
     FOREIGN KEY (armor_id) REFERENCES Armor(armor_id),
-    FOREIGN KEY (weapon_id) REFERENCES Armor(armor_id),
-    FOREIGN KEY (trinket_id) REFERENCES Armor(armor_id)
+    FOREIGN KEY (weapon_id) REFERENCES Weapon(weapon_id),
+    FOREIGN KEY (trinket_id) REFERENCES Trinket(trinket_id)
 );
 
 CREATE TABLE Personnage (
@@ -69,8 +69,8 @@ CREATE TABLE Personnage (
     weapon_id INTEGER NOT NULL,
     trinket_id INTEGER NOT NULL,
     FOREIGN KEY (armor_id) REFERENCES Armor(armor_id),
-    FOREIGN KEY (weapon_id) REFERENCES Armor(armor_id),
-    FOREIGN KEY (trinket_id) REFERENCES Armor(armor_id)
+    FOREIGN KEY (weapon_id) REFERENCES Weapon(weapon_id),
+    FOREIGN KEY (trinket_id) REFERENCES Trinket(trinket_id),
     FOREIGN KEY (player_id) REFERENCES user (id)
 );
 
