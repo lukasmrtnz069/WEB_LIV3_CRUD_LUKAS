@@ -51,4 +51,7 @@ def create_app(test_config=None):
     from . import character
     app.register_blueprint(character.bp)
 
+    from . import charlist
+    app.register_blueprint(charlist.bp)
+
     return app

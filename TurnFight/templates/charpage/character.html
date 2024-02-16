@@ -34,7 +34,7 @@
     <br>
     <select name="armor_id" id="armor_id" required>
       {% for armor in armors %}
-        <option value="{{ armor_id }}">{{ armor.armor_name }}</option>
+        <option value="{{ armor.armor_id }}">{{ armor.armor_name }}</option>
       {% endfor %}
     </select><br>
     <br>
@@ -42,7 +42,7 @@
     <br><br>
     <select name="weapon_id" id="weapon_id" required>
       {% for weapon in weapons %}
-        <option value="{{ weapon_id }}">{{ weapon.weapon_name }}</option>
+        <option value="{{ weapon.weapon_id }}">{{ weapon.weapon_name }}</option>
       {% endfor %}
     </select><br>
     <br><br>
@@ -50,7 +50,7 @@
     <br><br>
     <select name="trinket_id" id="trinket_id" required>
       {% for trinket in trinkets %}
-        <option value="{{ trinket_id }}">{{ trinket.trinket_name }}</option>
+        <option value="{{ trinket.trinket_id }}">{{ trinket.trinket_name }}</option>
       {% endfor %}
     </select><br>
     <br><br>

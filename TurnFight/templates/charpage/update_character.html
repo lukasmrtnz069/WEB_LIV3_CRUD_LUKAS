@@ -1,0 +1,41 @@
+<!-- update_character.html -->
+
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Update Character Equipment{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="char_id">Select Character:</label>
+    <select name="char_id" id="char_id" required>
+      {% for character in characters %}
+        <option value="{{ character.char_id }}">{{ character.char_name }}</option>
+      {% endfor %}
+    </select><br><br>
+
+    <label for="armor_id">Select Armor:</label>
+    <select name="armor_id" id="armor_id" required>
+      {% for armor in armors %}
+        <option value="{{ armor.armor_id }}">{{ armor.armor_name }}</option>
+      {% endfor %}
+    </select><br><br>
+
+    <label for="weapon_id">Select Weapon:</label>
+    <select name="weapon_id" id="weapon_id" required>
+      {% for weapon in weapons %}
+        <option value="{{ weapon.weapon_id }}">{{ weapon.weapon_name }}</option>
+      {% endfor %}
+    </select><br><br>
+
+    <label for="trinket_id">Select Trinket:</label>
+    <select name="trinket_id" id="trinket_id" required>
+      {% for trinket in trinkets %}
+        <option value="{{ trinket.trinket_id }}">{{ trinket.trinket_name }}</option>
+      {% endfor %}
+    </select><br><br>
+
+    <input type="submit" value="Update Equipment">
+  </form>
+{% endblock %}

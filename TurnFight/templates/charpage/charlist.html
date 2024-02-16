@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Characters{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <h2>All Characters</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Level</th>
+        <th>Hit Points</th>
+        <th>Player</th>
+        <th>Armor</th>
+        <th>Weapon</th>
+        <th>Trinket</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for character in characters %}
+      <tr>
+        <td>{{ character.char_name }}</td>
+        <td>{{ character.char_class }}</td>
+        <td>{{ character.char_level }}</td>
+        <td>{{ character.char_hit_points }}</td>
+        <td>{{ character.username }}</td>
+        <td>{{ character.armor }}</td>
+        <td>{{ character.weapon }}</td>
+        <td>{{ character.trinket }}</td>
+        <td><a href="/update_character">Update character equipment</a></td>
+        <td>
+            <form action="{{ url_for('character.delete_character', character_id=character.char_id) }}" method="post">
+                <input type="submit" value="Delete">
+            </form>
+        </td>
+
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
