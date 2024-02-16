@@ -22,6 +22,7 @@
     <tbody>
       {% for character in characters %}
       <tr>
+        <td>{{ character.char_id }}</td>
         <td>{{ character.char_name }}</td>
         <td>{{ character.char_class }}</td>
         <td>{{ character.char_level }}</td>
@@ -32,7 +33,7 @@
         <td>{{ character.trinket }}</td>
         <td><a href="/update_character">Update character equipment</a></td>
         <td>
-            <form action="{{ url_for('character.delete_character', character_id=character.char_id) }}" method="post">
+            <form action="{{ url_for('character.delete_character', char_id=character.char_id) }}" method="post">
                 <input type="submit" value="Delete">
             </form>
         </td>

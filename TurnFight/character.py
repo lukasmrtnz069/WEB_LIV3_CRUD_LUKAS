@@ -66,6 +66,21 @@ def character_creation():
                            trinkets=trinkets)
 
 
+@bp.route('/charlist')
+def charlist():
+    db = get_db()
+    characters = db.execute(
+        'SELECT p.char_id, p.char_name, p.char_class, p.char_level, p.char_hit_points, '
+        'u.username as username, a.armor_name as armor, w.weapon_name as weapon, t.trinket_name as trinket '
+        'FROM Personnage p '
+        'JOIN user u ON p.player_id = u.id '
+        'JOIN Armor a ON p.armor_id = a.armor_id '
+        'JOIN Weapon w ON p.weapon_id = w.weapon_id '
+        'JOIN Trinket t ON p.trinket_id = t.trinket_id'
+    ).fetchall()
+    return render_template('charpage/charlist.html', characters=characters)
+
+
 @bp.route('/update_character', methods=['GET', 'POST'])
 def update_character():
     db = get_db()
@@ -104,9 +119,9 @@ def update_character():
 
 
 @bp.route('/delete_character/<int:char_id>', methods=['POST'])
-def delete_character(character_id):
+def delete_character(char_id):
     db = get_db()
-    db.execute('DELETE FROM Personnage WHERE char_id = ?', (character_id,))
+    db.execute('DELETE FROM Personnage WHERE char_id = ?', (char_id,))
     db.commit()
     flash('Character deleted successfully!')
     return redirect(url_for('character.character_creation'))
